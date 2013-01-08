@@ -26,7 +26,6 @@ Please excuse the mess while I write up documentation and finish the MediaApi Wr
 - [Analytics API](#analytics-api) _(not yet implemented)_
 
 
-<a id="installation"></a>
 Installation
 -----------------------------
 Installation is handled via [npm](http://npmjs.org):
@@ -36,7 +35,6 @@ Installation is handled via [npm](http://npmjs.org):
 Brightcove offers several response formats, but this library demands JSON responses and, wherever possible, passes them through to you.
 
 
-<a id="media-api"></a>
 Media API
 ----------------------------
 The `MediaApi` object acts as the facade for all of the [Media API's calls and options][media-docs]. 
@@ -213,7 +211,7 @@ IF you'd like _programmatic_ or _intellisense-friendly_ access to these, they ca
 	mediaApi.findAllVideos(mediaApi.withDefaultOptions());
 
 
-<a id="analytics-api"></a>
+
 Analytics API
 ----------------------------
 Brightcove's analytics API is currently in beta.  Expect it here, soon!
