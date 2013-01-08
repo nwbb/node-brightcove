@@ -20,9 +20,9 @@ Please excuse the mess while I write up documentation and finish the MediaApi Wr
 
 - [Installation](#installation)
 - [Media API](#media-api)
-    - [Calls](#media-api-calls)
-    - [Options](#media-api-options)
-    - [Events](#media-api-events)
+    - [Calls](#mediaapi-calls)
+    - [Options](#mediaapi-options)
+    - [Events](#mediaapi-events)
 - [Analytics API](#analytics-api) _(not yet implemented)_
 
 
@@ -47,8 +47,7 @@ It is instance-based, allowing you to juggle more than one [Brightcove Token][me
 	var	mediaApi = new brightcove.MediaApi('myTokenOfAwesomeness');
 
 
-<a id="media-api-calls">&nbsp;</a>
-### Calls ###
+### MediaApi Calls ###
 Brightcove breaks up its Media API calls between Videos (read/write) and Playlists (read/write).  For organizational purposes, that's how they're listed here:
 
 **[Video Read API][media-docs-video-read]**
@@ -105,8 +104,8 @@ Brightcove breaks up its Media API calls between Videos (read/write) and Playlis
 + <code><strong>createPlaylist</strong> (playlist, _[callback]_)</code>
 	+ `playlist` Use the `brightcove.Playlist` facade to build this object.
 
-<a id="media-api-options"></a>
-### Options ###
+
+### MediaApi Options ###
 Most of the **read** calls require an `options` parameter which wraps up all of the available options Brightcove offers for its responses via the `Options` object. 
 
 These options govern:
@@ -162,8 +161,7 @@ Here's a crazy example:
 	mediaApi.findAllVideos(options);
 
 
-<a id="media-api-events"></a>
-### Events ###
+### MediaApi Events ###
 The `MediaApi` object also inherits from node's Event Emitter, allowing you to more easily manage callbacks.  
 
 	// Abstracted handler
