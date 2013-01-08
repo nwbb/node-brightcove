@@ -1,3 +1,4 @@
+[issues]: 			https://github.com/nwbb/node-brightcove/issues
 [media-docs]:		http://docs.brightcove.com/en/media/
 [media-docs-tokens]:		http://support.brightcove.com/en/video-cloud/docs/managing-media-api-tokens
 
@@ -9,7 +10,10 @@ node-brightcove
 
 This humble library aims to be a simple facade over Brigthcove's server APIs.  As Brightcove adds APIs or the mob demands additional functionality, it will be added here.
 
+Please excuse the mess while I write up documentation and finish the MediaApi Write calls!
+
 - [Installation](#installation)
+<!-- - [Getting Started](#getting-started) -->
 - [Media API](#media-api)
     - [Calls](#media-api-calls)
     - [Options](#media-api-options)
@@ -28,7 +32,6 @@ Installation is handled via [npm](http://npmjs.org):
 Brightcove offers several response formats, but this library demands JSON responses and, wherever possible, passes them through to you.
 
 <br />
-<br />
 
 <a id="media-api"></a>
 Media API
@@ -40,45 +43,71 @@ It is instance-based, allowing you to juggle more than one [Brightcove Token][me
 	var brightcove = require('brightcove');
 	var	mediaApi = new brightcove.MediaApi('myTokenOfAwesomeness');
 
-<br />
 
 <a id="media-api-calls">&nbsp;</a>
-#### Calls ####
+### Calls ###
 Brightcove breaks up its Media API calls between Videos (read/write) and Playlists (read/write).  For organizational purposes, that's how they're listed here:
 
-- Video Read API
-	- **findAllVideos** (options, _callback_)
-	- **findVideoById** (videoId, options, _callback_)
-	- **findVideosByIds** (videoIds, options, _callback_)
-	- **findRelatedVideos** (videoId, referenceId, options, _callback_)
-	- **findVideoByReferenceId** (referenceId, options, _callback_)
-	- **findVideosByReferenceIds** (referenceIds, options, _callback_)
-	- **searchVideos** (all, any, none, exact, options, _callback_)
+#### Video Read API ####
 
-- Playlist Read API
-	- **findAllPlaylists** ()
-	- **findPlaylistById** ()
-	- **findPlaylistsByIds** ()
-	- **findPlaylistByReferenceId** ()
-	- **findPlaylistsByReferenceIds** ()
+**findAllVideos** (options, _[callback]_)
+
+**findVideoById** (videoId, options, _[callback]_)
+
+**findVideosByIds** (videoIds, options, _[callback]_)
+
+**findRelatedVideos** (videoId, referenceId, options, _[callback]_)
+
+**findVideoByReferenceId** (referenceId, options, _[callback]_)
+
+**findVideosByReferenceIds** (referenceIds, options, _[callback]_)
+
+**searchVideos** (all, any, none, exact, options, _[callback]_)
 
 
-- Video Write API
+#### Video Write API ####
 
-- Playlist Write API
-	- **createPlaylist** ()
-	- **updatePlaylist** ()
-	- **deletePlaylist** ()
 
-<br />
+#### Playlist Read API ####
+**findAllPlaylists** (options, _callback_)
+
+**findPlaylistById** (playlistId, options, _callback_)
+
+**findPlaylistsByIds** (playlistIds, options, _callback_)
+
+**findPlaylistByReferenceId** (referenceId, options, _callback_)
+
+**findPlaylistsByReferenceIds** (referenceIds, options, _callback_)
+
+
+#### Playlist Write API ####
+**createPlaylist** (playlist, _callback_)
+<!--
+	- **updatePlaylist** (playlist, _callback_)
+	- **deletePlaylist** (playlistId, _callback_)
+-->
 
 <a id="media-api-options"></a>
-#### Options ####
+### Options ###
 
-<br />
+	var options = mediaApi.withOptions()
+		.includingCountOfItems()
+		.havingPageSizeOf(10)
+		.atPage(2)
+		.inAscendingOrder()
+		.inDescendingOrder()
+		.sortingBy()
+			.publishDate() or
+			.creationDate() or
+			.modifiedDate() or
+			.totalPlays() or
+			.totalPlaysOfLastWeek();
+
+	mediaApi.findAllVideos(options);
+
 
 <a id="media-api-events"></a>
-#### Events ####
+### Events ###
 The `MediaApi` object inherits from node's Event Emitter, allowing you to more easily manage callbacks.  
 
 	// Abstracted handler
@@ -128,7 +157,6 @@ IF you'd like a _programmatic_ or _intellisense-friendly_ access to these, they 
 	mediaApi.findAllVideos(mediaApi.withDefaultOptions());
 
 <br />
-<br />
 
 <a id="analytics-api"></a>
 Analytics API
@@ -138,38 +166,23 @@ Brightcove's analytics API is currently in beta.  Expect it here, soon!
 <br />
 <br />
 
+Support / Fixes / Comments
+-----------------------------
+Issues and comments should go through [github][issues].  I'll do my best to manage them.
+
+Any help is appreciated, too.  I'll respond as quickly as I can to all pull requests and comments.
+
+<br />
+<br />
+
 Useful Links
---------------
+-----------------------------
  - [Brightcove Media API Reference][media-docs]
  - [Brightcove Video Cloud Analytics API Reference][analytics-api-docs]
 
 
 
 <!---
-Currently supported calls: 
-// Video Read APIs
-	find_all_videos: 'find_all_videos',
-	find_video_by_id: 'find_video_by_id',
-	find_videos_by_ids: 'find_videos_by_ids',
-	find_related_videos: 'find_related_videos',
-	find_video_by_reference_id: 'find_video_by_reference_id',
-	find_videos_by_reference_ids: 'find_videos_by_reference_ids',
-	search_videos: 'search_videos',
-
-	// Playlist Read APIs
-	find_all_playlists: 'find_all_playlists',
-	find_playlist_by_id: 'find_playlist_by_id',
-	find_playlists_by_ids: 'find_playlists_by_ids',
-	find_playlist_by_reference_id: 'find_playlist_by_reference_id',
-	find_playlists_by_reference_ids: 'find_playlists_by_reference_ids',
-
-	// Video Write APIs
-
-	// Playlist Write APIs
-	create_playlist: 'create_playlist',
-	update_playlist: 'update_playlist',
-	delete_playlist: 'delete_playlist'
-
 // Example usage of Options
 /*
 api.findAllVideos(api.withOptions()
