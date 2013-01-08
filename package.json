@@ -1,5 +1,4 @@
 {
-    "private": true,
     "name": "brightcove",
     "description": "node.js implementation of Brightcove APIs",
     "keywords": [ "brightcove", "video", "media api", "api"],
