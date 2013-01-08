@@ -42,19 +42,18 @@ It is instance-based, allowing you to juggle more than one [Brightcove Token][me
 
 <br />
 
-<a id="media-api-calls"></a>
+<a id="media-api-calls">&nbsp;</a>
 #### Calls ####
 Brightcove breaks up its Media API calls between Videos (read/write) and Playlists (read/write).  For organizational purposes, that's how they're listed here:
 
 - Video Read API
 	- **findAllVideos** (options, _callback_)
-	- **findAllVideos** ()
-	- **findVideoById** ()
-	- **findVideosByIds** ()
-	- **findRelatedVideos** ()
-	- **findVideoByReferenceId** ()
-	- **findVideosByReferenceIds** ()
-	- **searchVideos** ()
+	- **findVideoById** (videoId, options, _callback_)
+	- **findVideosByIds** (videoIds, options, _callback_)
+	- **findRelatedVideos** (videoId, referenceId, options, _callback_)
+	- **findVideoByReferenceId** (referenceId, options, _callback_)
+	- **findVideosByReferenceIds** (referenceIds, options, _callback_)
+	- **searchVideos** (all, any, none, exact, options, _callback_)
 
 - Playlist Read API
 	- **findAllPlaylists** ()
@@ -62,6 +61,7 @@ Brightcove breaks up its Media API calls between Videos (read/write) and Playlis
 	- **findPlaylistsByIds** ()
 	- **findPlaylistByReferenceId** ()
 	- **findPlaylistsByReferenceIds** ()
+
 
 - Video Write API
 
