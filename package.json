@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "name": "brightcove",
+    "description": "node.js implementation of Brightcove APIs",
+    "keywords": [ "brightcove", "video", "media api", "api"],
+    "maintainers": "nwbb <nwebb1@gmail.com>",
+    "author": "Nick Webb <nwebb1@gmail.com>",
+    "homepage": "https://github.com/nwbb/node-brightcove",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nwbb/node-brightcove.git"
+    },
+    "bugs": { "url": "https://github.com/nwbb/node-brightcove/issues" },
+    "main": "./index.js",
+    "scripts": {
+        "test": "vows --spec"
+    },
+    "dependencies": {
+        "jsuri": ">=1.2.2"
+    },
+    "devDependencies": {
+        "vows": ">=0.6.1"
+    },
+    "engines": {
+        "node": ">=0.8.x"
+    }
+}
