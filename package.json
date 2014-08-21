@@ -16,7 +16,8 @@
         "test": "vows --spec"
     },
     "dependencies": {
-        "jsuri": ">=1.2.2"
+        "jsuri": ">=1.2.2",
+        "request": "^2.40.0"
     },
     "devDependencies": {
         "vows": ">=0.6.1"
