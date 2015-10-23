@@ -13,7 +13,7 @@
     "bugs": { "url": "https://github.com/nwbb/node-brightcove/issues" },
     "main": "./index.js",
     "scripts": {
-        "test": "vows --spec"
+        "test": "vows test/*.js --spec"
     },
     "dependencies": {
         "jsuri": ">=1.2.2"
