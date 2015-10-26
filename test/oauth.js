@@ -3,17 +3,16 @@ var vows = require('vows')
 	OAuthApi = require('../lib/oauthApi'),
 	helpers = require('./helpers');
 
+var lastToken = null;
+
 vows.describe('oauthApi/createAccessToken').addBatch({
 
 	'making the request': {
 		topic: new OAuthApi(helpers.TestClientId, helpers.TestClientSecret),
 
 		'createAccessToken': {
-			topic: function (api) { 
-				
-				var options = {};
-
-				api.createAccessToken(this.callback); 
+			topic: function (api) {
+				api.createAccessToken(this.callback);
 			},
 
 			'does not throw an error': function(err, json) {
@@ -30,6 +29,33 @@ vows.describe('oauthApi/createAccessToken').addBatch({
 
 			'receive a "token_type"': function(err, json) {
 				assert.notStrictEqual(json.token_type, undefined);
+			}
+		}
+	}
+})
+.addBatch({
+
+	'making the request': {
+		topic: new OAuthApi(helpers.TestClientId, helpers.TestClientSecret),
+
+		'createAccessToken + getAccessToken': {
+			topic: function (api) {
+				api.createAccessToken(function(err, json){
+					if (err) {
+						this.callback(err, json);
+					} else {
+						lastToken = json;
+						api.getAccessToken(this.callback);
+					}
+				}.bind(this));
+			},
+
+			'does not throw an error': function(err, json) {
+				assert.isNull(err);
+			},
+
+			'receive the same token created before': function(err, json) {
+				assert.strictEqual(json, lastToken);
 			}
 		}
 	}
