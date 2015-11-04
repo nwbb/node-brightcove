@@ -1,10 +1,12 @@
 
 // test tokens/ids/etc are taken from brightcove exemples :
+// - TestAccountId      : http://docs.brightcove.com/en/video-cloud/policy-api/getting-started/api-overview.html
 // - TestReadToken      : http://support.brightcove.com/fr/video-cloud/docs/exemples-de-videos-dans-la-barre-laterale
 // - TestClientId       : http://docs.brightcove.com/en/video-cloud/oauth-api/guides/get-client-credentials.html#steps
 // - TestClientSecret   : http://docs.brightcove.com/en/video-cloud/oauth-api/guides/get-client-credentials.html#steps
 
 module.exports = {
+	TestAccountId: '57838016001',
 	TestReadToken: '0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.',
 	TestWriteToken: 'j1R2gIYQ1wvkR6Vb-mvPQf51d6BH_GMUVmrVA5Y3-TuMXftUGPKNJA..',
 	TestVideoIds: [496518762, 496518763, 496518765],
