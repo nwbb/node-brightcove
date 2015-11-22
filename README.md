@@ -20,9 +20,11 @@ Please excuse the mess while I write up documentation and finish the MediaApi Wr
 
 - [Installation](#installation)
 - [Media API](#media-api)
-    - [Calls](#mediaapi-calls)
-    - [Options](#mediaapi-options)
-    - [Events](#mediaapi-events)
+	- [Calls](#mediaapi-calls)
+	- [Options](#mediaapi-options)
+	- [Events](#mediaapi-events)
+- [OAuth API](#oauth-api)
+- [Policy API](#policy-api)
 - [Analytics API](#analytics-api) _(not yet implemented)_
 
 
@@ -210,7 +212,49 @@ IF you'd like _programmatic_ or _intellisense-friendly_ access to these, they ca
 	// Make the call.
 	mediaApi.findAllVideos(mediaApi.withDefaultOptions());
 
+<br />
+<br />
 
+OAuth API
+----------------------------
+
+How to use :
+
+	var brightcove = require('brightcove');
+	var	oauthApi = new brightcove.OAuthApi('myClientId', 'myClientSecret');
+
+
++ <code><strong>getAccessToken</strong> (_[callback]_)</code> 
+
++ <code><strong>createClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
+
++ <code><strong>deleteClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
+
++ <code><strong>getClientCredentialById</strong> (_[callback]_) _(not yet implemented)_</code>
+
++ <code><strong>getClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
+
++ <code><strong>updateClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
+
+<br />
+<br />
+
+Policy API
+----------------------------
+
+How to use :
+
+	var brightcove = require('brightcove');
+	var	oauthApi = new brightcove.OAuthApi('myClientId', 'myClientSecret');
+	var	policyApi = new brightcove.PolicyApi('myAccountId', oauthApi);
+
++ <code><strong>getPolicyKey</strong> (_[callback]_)</code> 
+
++ <code><strong>getPolicy</strong> (keyString, _[callback]_)</code> 
+	+ `keyString` Policy key string returned by getPolicyKey()
+
+<br />
+<br />
 
 Analytics API
 ----------------------------
