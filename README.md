@@ -12,11 +12,11 @@
 
 
 node-brightcove
-=============================
+=========================================================================
 
-This humble library aims to be a simple facade over Brigthcove's server APIs.  As Brightcove adds APIs or the mob demands additional functionality, it will be added here.
-
-Please excuse the mess while I write up documentation and finish the MediaApi Write calls!
+This humble library aims to be a simple facade over Brigthcove's 
+server APIs.  As the mob demands additional functionality, it will 
+be added here.
 
 - [Installation](#installation)
 - [Media API](#media-api)
@@ -25,57 +25,67 @@ Please excuse the mess while I write up documentation and finish the MediaApi Wr
 	- [Events](#mediaapi-events)
 - [OAuth API](#oauth-api)
 - [Policy API](#policy-api)
-- [Analytics API](#analytics-api) _(not yet implemented)_
 
 
 Installation
------------------------------
+-------------------------------------------------------------------------
 Installation is handled via [npm](http://npmjs.org):
 
 	$ npm install brightcove
 
-Brightcove offers several response formats, but this library demands JSON responses and, wherever possible, passes them through to you.
+Brightcove offers several response formats, but this library 
+demands JSON responses and, wherever possible, passes them through 
+to you.
 
 
 Media API
-----------------------------
-The `MediaApi` object acts as the facade for all of the [Media API's calls and options][media-docs]. 
+-------------------------------------------------------------------------
+The `MediaApi` object acts as the facade for all of the [Media API's 
+calls and options][media-docs]. 
 
-It is instance-based, allowing you to juggle more than one [Brightcove Token][media-docs-tokens], if needed.
+It is instance-based, allowing you to juggle more than one 
+[Brightcove Token][media-docs-tokens], if needed.
 
 	var brightcove = require('brightcove');
 	var	mediaApi = new brightcove.MediaApi('myTokenOfAwesomeness');
 
 
 ### MediaApi Calls ###
-Brightcove breaks up its Media API calls between Videos (read/write) and Playlists (read/write).  For organizational purposes, that's how they're listed here:
+Brightcove breaks up its Media API calls between Videos (read/write) 
+and Playlists (read/write).  For organizational purposes, that's how 
+they're listed here:
 
 **[Video Read API][media-docs-video-read]**
 
-+ <code><strong>findAllVideos</strong>(options, _[callback]_)</code>
++ **`findAllVideos`** (options, _[callback]_)
 
-+ <code><strong>findVideoById</strong> (videoId, options, _[callback]_)</code> 
++ **`findVideoById`** (videoId, options, _[callback]_)
 	+ `videoId` Brightcove-assigned ID
 
-+ <code><strong>findVideosByIds</strong> (videoIds, options, _[callback]_)</code> 
++ **`findVideosByIds`** (videoIds, options, _[callback]_)
 	+ `videoIds` is a simple array of brightcove video IDs
 
-+ <code><strong>findRelatedVideos</strong> (videoId, referenceId, options, _[callback]_)</code> 
-	+ `videoId` _(optional)_ Brightcove-assigned ID of the video we'd like to find related videos for
-	+ `referenceId` _(optional)_ User-assigned ID of the video we'd like to find related videos for
++ **`findRelatedVideos`** (videoId, referenceId, options, _[callback]_)
+	+ `videoId` _(optional)_ Brightcove-assigned ID of the video we'd 
+    like to find related videos for
+	+ `referenceId` _(optional)_ User-assigned ID of the video we'd like 
+	to find related videos for
 
-+ <code><strong>findVideoByReferenceId</strong> (referenceId, options, _[callback]_)</code> 
++ **`findVideoByReferenceId`** (referenceId, options, _[callback]_)
 	+ `referenceId` User-assigned, optional ID attached to a video
 
-+ <code><strong>findVideosByReferenceIds</strong> (referenceIds, options, _[callback]_)</code> 
++ **`findVideosByReferenceIds`** (referenceIds, options, _[callback]_) 
 	+ `referenceIds` is a simple array of brightcove video IDs
 
-+ <code><strong>[searchVideos][media-docs-search]</strong> (all, any, none, exact, options, _[callback]_)</code>
-	+ `all, any, none` Array of strings. At least one argument must be set.  Others are optional.
++ **[searchVideos][media-docs-search]** (all, any, none, exact, options, 
+_[callback]_)
+	+ `all, any, none` Array of strings. At least one argument must be 
+	set.  Others are optional.
 	+ `all` Videos must contain all of the specified tags
 	+ `any` Videos can contain any of the specified tags
 	+ `none` Videos must **not** contain any of the specified tags
-	+ `exact` Boolean value.  If true, disables fuzzy search and requires tags to match exactly. 
+	+ `exact` Boolean value.  If true, disables fuzzy search and requires 
+	tags to match exactly. 
 
 
 **[Video Write API][media-docs-video-write]**
@@ -84,49 +94,57 @@ Brightcove breaks up its Media API calls between Videos (read/write) and Playlis
 
 **[Playlist Read API][media-docs-playlist-read]**
 
-+ <code><strong>findAllPlaylists</strong> (options, _[callback]_)</code> 
++ **`findAllPlaylists`** (options, _[callback]_)
 
-+ <code><strong>findPlaylistById</strong> (playlistId, options, _[callback]_)</code> 
++ **`findPlaylistById`** (playlistId, options, _[callback]_)
 	+ `playlistId` Brightcove-assigned ID
 
-+ <code><strong>findPlaylistsByIds</strong> (playlistIds, options, _[callback]_)</code> 
++ **`findPlaylistsByIds`** (playlistIds, options, _[callback]_)
 	+ `playlistIds` is a simple array of brightcove playlist IDs
 
-+ <code><strong>findPlaylistByReferenceId</strong> (referenceId, options, _[callback]_)</code> 
++ **`findPlaylistByReferenceId`** (referenceId, options, _[callback]_)
 	+ `referenceId` User-assigned, optional ID attached to a playlist
 
-+ <code><strong>findPlaylistsByReferenceIds</strong> (referenceIds, options, _[callback]_)</code> 
++ **`findPlaylistsByReferenceIds`** (referenceIds, options, _[callback]_)
 	+ `referenceIds` is a simple array of brightcove playlist IDs
 
 
 **[Playlist Write API][media-docs-playlist-write]**
 
-+ <code><strong>createPlaylist</strong> (playlist, _[callback]_)</code>
-	+ `playlist` Use the `brightcove.Playlist` facade to build this object.
++ **`createPlaylist`** (playlist, _[callback]_)
+	+ `playlist` Use the `brightcove.Playlist` facade to build this 
+	object.
 
 
 ### MediaApi Options ###
-Most of the **read** calls require an `options` parameter which wraps up all of the available options Brightcove offers for its responses via the `Options` object. 
+Most of the **read** calls require an `options` parameter which wraps 
+up all of the available options Brightcove offers for its responses 
+via the `Options` object. 
 
 These options govern:
 
-+ what fields are returned for each video/playlist in the response from Brightcove
++ what fields are returned for each video/playlist in the response 
+from Brightcove
 + pagination of returned videos/playlists
 + sorting of returned videos/playlists
 + which video streaming delivery type to use
 + etc.
 
-The `Options` object is created via the `MediaApi` instance.  A convenience method is included to quickly create the usually included fields, paging, and sorting options:
+The `Options` object is created via the `MediaApi` instance.  A 
+convenience method is included to quickly create the usually included 
+fields, paging, and sorting options:
 
 	var options = mediaApi.withDefaultOptions();
 
-However, you're likely going to define your own.  To do that, a fluent interface was created to make things easier:
+However, you're likely going to define your own.  To do that, a fluent 
+interface was created to make things easier:
 
 	var options = mediaApi.withOptions
 						.havingPageSizeOf(10).atPage(2)
 						.sortingBy().creationDate().inAscendingOrder();
 
-Notice that the return chain is context-aware.  If you're rocking intellisense in your editor, this should be a breeze.
+Notice that the return chain is context-aware.  If you're rocking 
+intellisense in your editor, this should be a breeze.
 
 Here's a crazy example:
 
@@ -162,7 +180,8 @@ Here's a crazy example:
 
 
 ### MediaApi Events ###
-The `MediaApi` object also inherits from node's Event Emitter, allowing you to more easily manage callbacks.  
+The `MediaApi` object also inherits from node's Event Emitter, allowing 
+you to more easily manage callbacks.  
 
 	// Abstracted handler
 	var findAllVideosHandler = function(err, jsonResponse) {
@@ -176,9 +195,12 @@ The `MediaApi` object also inherits from node's Event Emitter, allowing you to m
 	// Make the call.
 	mediaApi.findAllVideos(mediaApi.withDefaultOptions());
 
-All events are emitted with two arguments: `err, jsonResponse`.  Following node convention, the `err` argument will be null if no error occurred as will `jsonResponse` if an error _did_ occur.
+All events are emitted with two arguments: `err, jsonResponse`.  
+Following node convention, the `err` argument will be null if no error 
+occurred as will `jsonResponse` if an error _did_ occur.
 
-**Emitted events** will have a name in congruence with Brightcove's own command names:
+**Emitted events** will have a name in congruence with Brightcove's own 
+command names:
 
 - Video Read API
 	- `find_all_videos`
@@ -203,7 +225,8 @@ All events are emitted with two arguments: `err, jsonResponse`.  Following node 
 	- `update_playlist`
 	- `delete_playlist`
 
-IF you'd like _programmatic_ or _intellisense-friendly_ access to these, they can be accessed with the `commands` property:  
+If you'd like _programmatic_ or _intellisense-friendly_ access to these, 
+they can be accessed with the `commands` property:  
 
 	// Register the handler 
 	// Specify the event name using the 'commands' enum
@@ -216,7 +239,7 @@ IF you'd like _programmatic_ or _intellisense-friendly_ access to these, they ca
 <br />
 
 OAuth API
-----------------------------
+-------------------------------------------------------------------------
 
 How to use :
 
@@ -224,106 +247,51 @@ How to use :
 	var	oauthApi = new brightcove.OAuthApi('myClientId', 'myClientSecret');
 
 
-+ <code><strong>getAccessToken</strong> (_[callback]_)</code> 
++ **`getAccessToken`** (_[callback]_)
 
-+ <code><strong>createClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
++ **`createClientCredential`** (_[callback]_) _(not yet implemented)_
 
-+ <code><strong>deleteClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
++ **`deleteClientCredential`** (_[callback]_) _(not yet implemented)_
 
-+ <code><strong>getClientCredentialById</strong> (_[callback]_) _(not yet implemented)_</code>
++ **`getClientCredentialById`** (_[callback]_) _(not yet implemented)_
 
-+ <code><strong>getClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
++ **`getClientCredential`** (_[callback]_) _(not yet implemented)_
 
-+ <code><strong>updateClientCredential</strong> (_[callback]_) _(not yet implemented)_</code>
++ **`updateClientCredential`** (_[callback]_) _(not yet implemented)_
 
 <br />
 <br />
 
 Policy API
-----------------------------
-
+-------------------------------------------------------------------------
 How to use :
 
 	var brightcove = require('brightcove');
 	var	oauthApi = new brightcove.OAuthApi('myClientId', 'myClientSecret');
 	var	policyApi = new brightcove.PolicyApi('myAccountId', oauthApi);
 
-+ <code><strong>getPolicyKey</strong> (_[callback]_)</code> 
++ **`getPolicyKey`** (_[callback]_)
 
-+ <code><strong>getPolicy</strong> (keyString, _[callback]_)</code> 
++ **`getPolicy`** (keyString, _[callback]_)
 	+ `keyString` Policy key string returned by getPolicyKey()
 
-<br />
-<br />
-
-Analytics API
-----------------------------
-Brightcove's analytics API is currently in beta.  Expect it here, soon!
 
 <br />
 <br />
 
 Support / Fixes / Comments
------------------------------
-Issues and comments should go through [github][issues].  I'll do my best to manage them.
+-------------------------------------------------------------------------
+Issues and comments should go through [github][issues].  I'll do my 
+best to manage them.
 
-Any help is appreciated, too.  I'll respond as quickly as I can to all pull requests and comments.
+Any help is appreciated, too.  I'll respond as quickly as I can to 
+all pull requests and comments.
 
 <br />
 <br />
 
 Useful Links
------------------------------
+-------------------------------------------------------------------------
  - [Brightcove Media API Reference][media-docs]
  - [Brightcove Video Cloud Analytics API Reference][analytics-api-docs]
 
-
-
-<!---
-// Example usage of Options
-/*
-api.findAllVideos(api.withOptions()
-	.includingCountOfItems()
-	.havingPageSizeOf(10)
-	.atPage(2)
-	.inAscendingOrder()
-	.inDescendingOrder()
-	.sortingBy()
-		.publishDate() or
-		.creationDate() or
-		.modifiedDate() or
-		.totalPlays() or
-		.totalPlaysOfLastWeek()
-	.withCustomFields(Array)
-	.includingField().videoId()
-	.includingField().title()
-	.includingField().shortDescription()
-	.includingField().longDescription()
-	.includingField().creationDate()
-	.includingField().publishedDate()
-	.includingField().lastModifiedDate()
-	.includingField().linkUrl()
-	.includingField().linkText()
-	.includingField().tags()
-	.includingField().videoStillUrl()
-	.includingField().thumbnailUrl()
-	.includingField().referenceId()
-	.includingField().duration()
-	.includingField().economics()
-	.includingField().playsTotal()
-	.includingField().playsTrailingWeek()
-	.includingField().videoUrl()
-	.includingField().renditions()
-	.includingField().iOSRenditions()
-	.includingField().FLVFullLength()
-	.includingField().videoFullLength()
-
-	or
-	.includingField().all()
-
-	or
-	.includingField().defaults()
-
-	.usingLiveStream()
-);
-*/ -->
