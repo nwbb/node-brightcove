@@ -286,6 +286,16 @@ How to use :
 <br />
 <br />
 
+Proxy configuration
+-------------------------------------------------------------------------
+How to use :
+
+	var brightcove = require('brightcove');
+	var	mediaApi = new brightcove.MediaApi('myTokenOfAwesomeness', { proxy: 'xx.xx.xx.xx' });
+
+<br />
+<br />
+
 Support / Fixes / Comments
 -------------------------------------------------------------------------
 Issues and comments should go through [github][issues].  I'll do my 
