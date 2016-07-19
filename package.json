@@ -7,7 +7,7 @@
     "media api",
     "api"
   ],
-  "maintainers": "nwbb <nwebb1@gmail.com>",
+  "maintainers": ["nwbb <nwebb1@gmail.com>"],
   "author": "Nick Webb <nwebb1@gmail.com>",
   "homepage": "https://github.com/nwbb/node-brightcove",
   "version": "0.3.0",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "jsuri": ">=1.2.2",
-    "request": ">=2.73.1"
+    "request": ">=2.73.0"
   },
   "devDependencies": {
     "vows": ">=0.6.1"
