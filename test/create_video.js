@@ -20,7 +20,7 @@ vows.describe('mediaApi/createVideo').addBatch({
 
 				var video = new Video.ConvertJsonToVideo({
           name: 'test-video-' + (new Date()).getTime(), // Random title for test video
-          referenceId: 'test_reference',
+          referenceId: 'test_reference_' + (new Date()).getTime(),
           shortDescription: 'shortDescriptionValue',
           startDate: 1468678081000,
           file: path.join(__dirname, 'test_video.mp4')
