@@ -26,7 +26,9 @@ vows.describe('mediaApi/createVideo').addBatch({
           file: path.join(__dirname, 'test_video.mp4')
         })
 
-				api.createVideo(video, this.callback);
+				api.createVideo(video, this.callback, function (progress) {
+					console.log('upload progress: ' + progress);
+				});
 
 			},
 
