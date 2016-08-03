@@ -90,7 +90,11 @@ _[callback]_)
 
 **[Video Write API][media-docs-video-write]**
 
-+ _(not yet implemented)_
++ **`createVideo`** (video, _[callback]_)
++ **`updateVideo`** (video, _[callback]_)
++ **`deleteVideo`** (video, _[callback]_)
+	+ `video` Use the `brightcove.Video` facade to build this 
+	object.
 
 **[Playlist Read API][media-docs-playlist-read]**
 
@@ -218,7 +222,10 @@ command names:
 	- `find_playlist_by_reference_id`
 	- `find_playlists_by_reference_ids`
 
-- Video Write API _(not yet implemented)_
+- Video Write API
+	- `create_video`
+	- `update_video`
+	- `delete_video`
 
 - Playlist Write API
 	- `create_playlist`
@@ -275,6 +282,16 @@ How to use :
 + **`getPolicy`** (keyString, _[callback]_)
 	+ `keyString` Policy key string returned by getPolicyKey()
 
+
+<br />
+<br />
+
+Proxy configuration
+-------------------------------------------------------------------------
+How to use :
+
+	var brightcove = require('brightcove');
+	var	mediaApi = new brightcove.MediaApi('myTokenOfAwesomeness', { proxy: 'xx.xx.xx.xx' });
 
 <br />
 <br />
