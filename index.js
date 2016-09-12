@@ -3,6 +3,7 @@ var MediaApi = require('./lib/mediaApi'),
 	PolicyApi = require('./lib/policyApi'),
 	Playlist = require('./lib/playlist'),
 	Video = require('./lib/video'),
+	Image = require('./lib/image'),
 	Errors = require('./lib/errors');
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
 	PolicyApi: PolicyApi,
 	Playlist: Playlist,
 	Video: Video,
+	Image: Image,
 	errors: Errors
 }
