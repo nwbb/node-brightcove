@@ -90,10 +90,17 @@ _[callback]_)
 
 **[Video Write API][media-docs-video-write]**
 
-+ **`createVideo`** (video, _[callback]_)
++ **`createVideo`** (video, _[callback]_, _[progressCallback]_)
 + **`updateVideo`** (video, _[callback]_)
-+ **`deleteVideo`** (video, _[callback]_)
 	+ `video` Use the `brightcove.Video` facade to build this 
+	object.
+
++ **`deleteVideoById`** (id, options, _[callback]_)
++ **`deleteVideoByReferenceId`** (referenceId, options, _[callback]_)
+
++ **`addThumbnailImage`** (image, _[callback]_, _[progressCallback]_)
++ **`addVideoStillImage`** (image, _[callback]_, _[progressCallback]_)
+	+ `image` Use the `brightcove.Image` facade to build this 
 	object.
 
 **[Playlist Read API][media-docs-playlist-read]**
