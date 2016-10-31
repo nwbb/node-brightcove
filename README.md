@@ -10,6 +10,29 @@
 
 [analytics-api-docs]:	http://docs.brightcove.com/en/video-cloud-analytics-api/
 
+ATTENTION
+=============
+There is a new API offered by Brightcove that is going to become _de facto_ by 
+the end of 2017, with existing endpoints that this library uses retiring.
+
+The new API is of significant difference to the endpoints used by this library 
+that myself and the main contributors feel like a shift is needed.  Rather than 
+having this library break compatibility, we have opted to retire this library
+as well and work towards a new one.
+
+A link will be provided here soon.
+
+A bit of our thinking can be found 
+[here](https://github.com/nwbb/node-brightcove/issues/12).
+
+In the meantime, this isn't going anywhere and I will continue to merge any 
+contributions you have to offer.
+
+Cheers!
+*- nick*
+
+
+
 
 node-brightcove
 =========================================================================
